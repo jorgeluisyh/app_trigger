@@ -1,0 +1,53 @@
+{
+  "displayFieldName" : "",
+  "fieldAliases" : {
+    "OBJECTID" : "OBJECTID",
+    "CODIGOU" : "CODIGOU",
+    "ESTADO" : "ESTADO",
+    "ZONA" : "ZONA",
+    "SHAPE_Length" : "SHAPE_Length",
+    "SHAPE_Area" : "SHAPE_Area"
+  },
+  "geometryType" : "esriGeometryPolygon",
+  "spatialReference" : {
+    "wkid" : 32718,
+    "latestWkid" : 32718
+  },
+  "fields" : [
+    {
+      "name" : "OBJECTID",
+      "type" : "esriFieldTypeOID",
+      "alias" : "OBJECTID"
+    },
+    {
+      "name" : "CODIGOU",
+      "type" : "esriFieldTypeString",
+      "alias" : "CODIGOU",
+      "length" : 13
+    },
+    {
+      "name" : "ESTADO",
+      "type" : "esriFieldTypeString",
+      "alias" : "ESTADO",
+      "length" : 254
+    },
+    {
+      "name" : "ZONA",
+      "type" : "esriFieldTypeString",
+      "alias" : "ZONA",
+      "length" : 2
+    },
+    {
+      "name" : "SHAPE_Length",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "SHAPE_Length"
+    },
+    {
+      "name" : "SHAPE_Area",
+      "type" : "esriFieldTypeDouble",
+      "alias" : "SHAPE_Area"
+    }
+  ],
+  "features" : [
+  ]
+}
