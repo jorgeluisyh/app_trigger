@@ -8,7 +8,8 @@ import uuid
 
 class LogFile(object):
     def __init__(self):
-        self._log = open(os.path.join(Statics().log, 'process_error_%s.log' % uuid.uuid4().__str__()), 'w')
+        path = os.path.join(Statics().log, 'process_error_%s.log' % uuid.uuid4().get_hex().__str__())
+        self._log = open(path, 'w')
 
     def log_write_row(self, *args):
         message = '%s | [%s] | %s\n' % (args[0], datetime.now().__str__(), args[1])

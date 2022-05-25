@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-reload(sys)
-sys.setdefaultencoding('windows-1252')
-
 # Importacion de librerias
 from app_getrowdata import *
 from app_creategeom import *
@@ -12,14 +8,15 @@ from app_writelogfile import *
 import shutil
 import sys
 import arcpy
-# import uuid
 
 arcpy.env.overwriteOutput = True
 
 # # Product mode
-codes = sys.argv[1]
+# codes = sys.argv[1]
+codes = '010039303'
+
 # Debug mode
-pseudocode = dict()
+# codes = '010014117'
 
 # Se obtienen todos los codigos de derechos mineros
 # de la base de datos
@@ -87,15 +84,6 @@ shapes[2][18] = ShapeBUILD(wgs_18)
 # Objeto shapefile en WGS84 | 19
 shapes[2][19] = ShapeBUILD(wgs_19)
 
-def updatePseudo(capa):
-    """
-    Actualizar codigou con valores de pseudocodigo generados
-    """
-    with arcpy.da.UpdateCursor(capa,["CODIGOU"]) as cursor:
-        for row in cursor:
-            realcode = pseudocode[row[0]]
-            row[0] = realcode
-            cursor.updateRow(row)
 
 def projections(name, code):
     """
@@ -136,15 +124,7 @@ def createFeatures():
     global shp18
     for i, x in enumerate(codigous, 1):
         # Imprimiendo en consola el codigo actual
-        if i<=46123:
-            continue
-        if i>46142:
-            continue
-
         print i, x
-        pseudo = uuid.uuid4().hex
-        pseudo = "code"+str(i)
-        pseudocode[pseudo]= unicode(x)
         # Intenta
         try:
             poo = MiningConcessionINFO(x)
@@ -152,7 +132,7 @@ def createFeatures():
             for v in poo.data:
                 m = shapes[v['src']][int(v['zona_load'])]
                 m.set_coords(v['coords'])
-                m.set_records(pseudo, v['zona'], v['estado'])
+                m.set_records(x, v['zona'], v['estado'])
         # En caso de error
         except Exception as e:
             log.log_write_row(x, e.message)  # Registro archivo log
@@ -165,7 +145,6 @@ def createFeatures():
         projections(shp.get_name(), 24877)
         arcpy.RepairGeometry_management(shp.outpath)
         arcpy.CalculateField_management(shp.outpath, shp.area, '!SHAPE.area@HECTARES!', "PYTHON")
-        updatePseudo(shp.outpath)
     except Exception as e:
         log.log_write_row('ERROR: Graficar shapefile en PSAD56 17s', e)
         print e
@@ -176,7 +155,6 @@ def createFeatures():
         projections(shp.get_name(), 24878)
         arcpy.RepairGeometry_management(shp.outpath)
         arcpy.CalculateField_management(shp.outpath, shp.area, '!SHAPE.area@HECTARES!', "PYTHON")
-        updatePseudo(shp.outpath)
     except Exception as e:
         log.log_write_row('ERROR: Graficar shapefile en PSAD56 18s', e)
         print e
@@ -187,7 +165,6 @@ def createFeatures():
         projections(shp.get_name(), 24879)
         arcpy.RepairGeometry_management(shp.outpath)
         arcpy.CalculateField_management(shp.outpath, shp.area, '!SHAPE.area@HECTARES!', "PYTHON")
-        updatePseudo(shp.outpath)
     except Exception as e:
         log.log_write_row('ERROR: Graficar shapefile en PSAD56 19s', e)
         print e
@@ -198,7 +175,6 @@ def createFeatures():
         projections(shp.get_name(), 32717)
         arcpy.RepairGeometry_management(shp.outpath)
         arcpy.CalculateField_management(shp.outpath, shp.area, '!SHAPE.area@HECTARES!', "PYTHON")
-        updatePseudo(shp.outpath)
     except Exception as e:
         log.log_write_row('ERROR: Graficar shapefile en WGS84 17s', e)
         print e
@@ -209,7 +185,6 @@ def createFeatures():
         projections(shp18.get_name(), 32718)
         arcpy.RepairGeometry_management(shp18.outpath)
         arcpy.CalculateField_management(shp18.outpath, shp18.area, '!SHAPE.area@HECTARES!', "PYTHON")
-        updatePseudo(shp18.outpath)
     except Exception as e:
         log.log_write_row('ERROR: Graficar shapefile en WGS84 18s', e)
         print e

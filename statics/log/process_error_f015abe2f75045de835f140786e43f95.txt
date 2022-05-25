@@ -1,0 +1,7 @@
+start | [2018-11-27 18:08:36.862000] | ...
+delete files | [2018-11-27 18:08:36.869000] | 
+ERROR: Graficar shapefile en GCS | [2018-11-27 18:08:51.362000] | Failed to execute. Parameters are not valid.
+ERROR 000725: Output Dataset or Feature Class: Dataset \\srvfs01\bdgis$\Temp\cataE\cmi_trigger\shp_query\GPO_CMI_CATASTRO_MINERO_GCS.shp already exists.
+Failed to execute (Project).
+
+end | [2018-11-27 18:08:51.362000] | ...

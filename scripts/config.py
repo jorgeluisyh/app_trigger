@@ -66,9 +66,9 @@ class Statics(object):
 
     def __init__(self):
         self.path = os.path.join(BASE_DIR, 'statics')
-        self.log = r'U:\Temp\cataE\cmi_trigger\log'
-        self.shp = r'U:\Temp\cataE\cmi_trigger\shp'
-        self.shp_query = r'U:\Temp\cataE\cmi_trigger\shp_query'
+        self.log = r'\\srvfs01\bdgis$\Temp\cataE\cmi_trigger\log'
+        self.shp = r'\\srvfs01\bdgis$\Temp\cataE\cmi_trigger\shp'
+        self.shp_query = r'\\srvfs01\bdgis$\Temp\cataE\cmi_trigger\shp_query'
         self.prj = os.path.join(self.path, 'prj')
 
     # Impresion de la clase

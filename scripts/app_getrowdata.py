@@ -68,7 +68,7 @@ class MiningConcessionINFO(object):
         :param n:
         :return:
         """
-        self.overlap[n] = self.cursor.callfunc('DATA_CAT.PACK_DBA_SG_T_CATASTRO_MINERO.F_GET_ZONE_OVERLAP',
+        self.overlap[n] = self.cursor.callfunc('DATA_CAT.PACK_DBA_SIGCATMIN.F_GET_ZONE_OVERLAP',
                                                oracle.STRING, [self.overlap[0], n])
 
     def get_state(self):

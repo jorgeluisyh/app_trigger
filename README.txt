@@ -9,3 +9,11 @@ execute.bat codigou_codigou_codigou
 
 El resultado de esta operacion se almacenara en el U:\Temp\cataE\cmi_trigger\shp_query
 Puede consutar el estado de las operaciones en la carpeta 'log'.
+
+------------
+
+NOTA: Si desea ejecutar toda la base de datos:
+
+cmd> execute.bat  <enter>
+
+El resultado de esta operacion se almacenara en el U:\Temp\cataE\cmi_trigger\shp
